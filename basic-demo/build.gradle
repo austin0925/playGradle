@@ -1,0 +1,44 @@
+plugins {
+    id 'base'
+}
+
+description = 'A trivial Gradle build'
+version = '1.0'
+
+
+task copy(type: Copy) {
+    from 'src'
+    into 'dest'
+}
+
+task zip(type: Zip){
+    from 'src'
+}
+
+class Greeting extends DefaultTask{
+    String message
+    String recipient
+
+    @TaskAction
+    void sayGreeting(){
+        println "${message}, ${recipient}!"
+    }
+}
+
+task hello (type: Greeting){
+    group 'Welcome'
+    description 'Produces a greeting'
+    message 'Hello'
+    recipient 'World'
+
+    // doLast{
+    //     println 'Hello, world!'
+    // }
+}
+
+task gutenTag( type : Greeting ) {
+    group 'Welcome'
+    description 'Produces a German greeting'
+    message 'Guten Tag'
+    recipient 'Welt'
+}
