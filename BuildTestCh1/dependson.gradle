@@ -1,0 +1,15 @@
+// Declare that world depends on hello
+// Preserves any previously defined dependencies as well 
+task loadTestData {
+dependsOn createSchema }
+// An alternate way to express the same dependency 
+task loadTestData {
+dependsOn << createSchema }
+// Do the same using single quotes (which are usually optional) 
+task loadTestData {
+dependsOn 'createSchema' }
+// Explicitly call the method on the task object 
+task loadTestData
+loadTestData.dependsOn createSchema
+// A shortcut for declaring dependencies 
+task loadTestData(dependsOn: createSchema)

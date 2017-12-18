@@ -1,0 +1,25 @@
+apply plugin: 'java'
+
+task helloWorld << {
+    println 'hello, world' 
+}
+
+task hello
+hello << {
+    print 'hello, ' 
+}
+hello << {
+    println 'world' 
+}
+
+
+task initializeDatabase
+initializeDatabase << { 
+    println 'connect to database' 
+} 
+initializeDatabase << { 
+    println 'update database schema' 
+} 
+initializeDatabase { 
+    println 'configuring database connection' 
+}
