@@ -1,0 +1,11 @@
+task createSchema{doLast {
+    println 'create database schema' 
+}}
+
+task loadTestData(dependsOn: createSchema){doLast {
+    println 'load test data' 
+}}
+
+loadTestData.onlyIf {
+    System.properties['load.data'] == 'true' 
+}
