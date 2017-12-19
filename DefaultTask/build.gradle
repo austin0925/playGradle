@@ -1,0 +1,34 @@
+apply plugin: 'java'
+
+
+task emailMe(dependsOn: compileJava) {doLast{  
+    if(!tasks.compileJava.didWork) {
+        println 'SEND EMAIL ANNOUNCING SUCCESS' 
+    }
+} }
+emailMe{
+    group = 'function'
+    description = 'email is the test task'
+}
+
+task echoMyPath {doLast {
+    println "THIS TASK'S PATH IS ${path}"
+}}
+
+task logLevel {doLast {
+def levels = ['DEBUG',
+'INFO', 'LIFECYCLE', 'QUIET', 'WARN', 'ERROR']
+levels.each { level ->
+    logging.level = level
+    def logMessage = "SETTING LogLevel=${level}" 
+    logger.error logMessage
+logger.error '-' * logMessage.size() 
+logger.debug 'DEBUG ENABLED'
+logger.info 'INFO ENABLED'
+logger.lifecycle 'LIFECYCLE ENABLED' 
+logger.warn 'WARN ENABLED'
+logger.quiet 'QUIET ENABLED'
+logger.error 'ERROR ENABLED'
+println 'THIS IS println OUTPUT' 
+logger.error ' '
+} }}

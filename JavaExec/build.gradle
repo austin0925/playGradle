@@ -1,0 +1,25 @@
+apply plugin: 'java'
+
+repositories{
+    mavenCentral()
+}
+
+dependencies{
+    runtime 'commons-codec:commons-codec:1.5'
+}
+
+task encode(type: JavaExec, dependsOn: classes){
+    main = 'org.gradle.example.commandline.MetaphoneEncoder'
+    args = "The rain in Spain falls mainly in the plain".split().toList() 
+    classpath sourceSets.main.classesDir
+    classpath configurations.runtime
+}
+
+task createDatabase(type: MySqlTask){
+    sql = 'CREATE DATABASE IF NOT EXISTS example'
+}
+
+task createUser(type: MySqlTask, dependsOn: createDatabase){
+    sql = "GRANT ALL PRIVILEGES ON example.* 
+    TO exampleuser@localhost IDENTIFIED BY 'passw0rd'"
+}
