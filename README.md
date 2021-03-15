@@ -1,3 +1,20 @@
+# prj desc
+
+* KtPrj
+
+    使用kotlin建立的專案，透過gradle進行包裝。但是只有簡單的Hello World for console app starter
+
+* JavaPrj
+
+    使用java建立的專案，透過gradle進行包裝。但是只有簡單的Hello World for console app starter
+
+* openWeatherPrj
+
+    使用java建立的專案，透過gradle進行包裝。這個專案是呼叫股市大盤的API進行資料讀取，做成指定的文字檔儲存起來。\
+
+    詳細內容請參考**README.md**
+
+
 # branch
 * CreatingNewGradleBuilds: 
     
